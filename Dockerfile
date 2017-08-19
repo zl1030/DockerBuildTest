@@ -1,4 +1,4 @@
-FROM openjdk:8u141-jre
+FROM java:8
 
 MAINTAINER zl1030 "zl1030@163.com"
 
