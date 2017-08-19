@@ -21,6 +21,7 @@ RUN set -eux \
     && mvn clean package \
     && mkdir "$APP_PATH" \
     && cp target/"$JAR_NAME" "$APP_PATH"/ \
+    && mv "$APP_PATH"/"$JAR_NAME" "$APP_PATH"/app.jar
     && rm -rf "$WORKSPACE_PATH"
 
 WORKDIR "$APP_PATH"
@@ -30,7 +31,10 @@ WORKDIR "$APP_PATH"
 # ENV CLASSPATH .:${JAVA_HOME}/lib:${JRE_HOME}/lib
 # ENV PATH ${JAVA_HOME}/bin:$PATH
 
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH=$JAVA_HOME/bin:$PATH
+ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
-#ENTRYPOINT ["java","-jar","-d64","-server","DockerBuildTest-1.0-SNAPSHOT.jar"]
+#ENTRYPOINT ["java","-jar","-d64","-server","app.jar"]
 
-CMD ["java","-jar","DockerBuildTest-1.0-SNAPSHOT.jar"]
+CMD ["java","-jar","app.jar"]
