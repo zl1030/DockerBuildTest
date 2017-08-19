@@ -17,8 +17,6 @@ WORKDIR /usr/workspace
 
 ADD ./* ./
 
-RUN ls -l
-
 RUN mvn clean package
 
 RUN mkdir /usr/target
