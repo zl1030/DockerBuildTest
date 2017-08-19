@@ -25,7 +25,6 @@
 !.gitignore
 !LICENSE
 !README.md
-!Dockerfile
 
 # Ignore some directory
 .*/
