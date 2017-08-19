@@ -1,15 +1,11 @@
-FROM alpine:3.6
+FROM openjdk:8-jre-alpine
 
 MAINTAINER zl1030 "zl1030@163.com"
 
 RUN apk update
 
-RUN apk add --no-cache openjdk8 maven
-
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
-ENV JRE_HOME ${JAVA_HOME}/jre
-ENV CLASSPATH .:${JAVA_HOME}/lib:${JRE_HOME}/lib
-ENV PATH ${JAVA_HOME}/bin:$PATH
+RUN apk add --no-cache \
+    maven
 
 RUN mkdir /usr/workspace
 
