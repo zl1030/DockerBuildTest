@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8u141-jre
 
 MAINTAINER zl1030 "zl1030@163.com"
 
@@ -6,9 +6,9 @@ ENV JAR_NAME=DockerBuildTest-1.0-SNAPSHOT.jar
 ENV WORKSPACE_PATH=/usr/workspace
 ENV APP_PATH=/usr/target
 
-RUN apk update
+RUN apt-get update
 
-RUN apk add --no-cache \
+RUN apt-get install -y \
     maven
 
 RUN mkdir "$WORKSPACE_PATH"
@@ -25,11 +25,12 @@ RUN set -eux \
 
 WORKDIR "$APP_PATH"
 
-ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
-ENV JRE_HOME ${JAVA_HOME}/jre
-ENV CLASSPATH .:${JAVA_HOME}/lib:${JRE_HOME}/lib
-ENV PATH ${JAVA_HOME}/bin:$PATH
+# ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+# ENV JRE_HOME ${JAVA_HOME}/jre
+# ENV CLASSPATH .:${JAVA_HOME}/lib:${JRE_HOME}/lib
+# ENV PATH ${JAVA_HOME}/bin:$PATH
+
 
 #ENTRYPOINT ["java","-jar","-d64","-server","DockerBuildTest-1.0-SNAPSHOT.jar"]
 
-CMD ["java","-jar","-d64","-server","DockerBuildTest-1.0-SNAPSHOT.jar"]
+CMD ["java","-jar","DockerBuildTest-1.0-SNAPSHOT.jar"]
