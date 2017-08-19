@@ -25,4 +25,6 @@ RUN cp target/DockerBuildTest-1.0-SNAPSHOT.jar /usr/target/
 
 RUN rm -rf /usr/workspace
 
-ENTRYPOINT ["java","-jar","-d64","-server","/usr/target/DockerBuildTest-1.0-SNAPSHOT.jar"]
+#ENTRYPOINT ["java","-jar","-d64","-server","/usr/target/DockerBuildTest-1.0-SNAPSHOT.jar"]
+
+CMD ["java","-jar","-d64","-server","/usr/target/DockerBuildTest-1.0-SNAPSHOT.jar"]
