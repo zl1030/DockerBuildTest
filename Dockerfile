@@ -12,6 +12,8 @@ WORKDIR /usr/app
 
 ADD ./* ./
 
+RUN ls -l
+
 RUN mvn clean package
 
 ENTRYPOINT ["java","-jar","-d64","-server","target/DockerBuildTest-1.0-SNAPSHOT.jar"]
