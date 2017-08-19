@@ -6,8 +6,6 @@ RUN apk update
 
 RUN apk add --no-cache openjdk8 maven
 
-RUN export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
-
 RUN mkdir /usr/app
 
 WORKDIR /usr/app
