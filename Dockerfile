@@ -6,10 +6,10 @@ RUN apk update
 
 RUN apk add --no-cache openjdk8 maven
 
-RUN export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
-RUN export JRE_HOME=${JAVA_HOME}/jre
-RUN export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
-RUN export PATH=${JAVA_HOME}/bin:$PATH
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JRE_HOME ${JAVA_HOME}/jre
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
 
 RUN mkdir /usr/workspace
 
