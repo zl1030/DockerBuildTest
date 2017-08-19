@@ -8,8 +8,8 @@ RUN mkdir /usr/app
 
 WORKDIR /usr/app
 
+ADD ./* .
+
 RUN mvn clean package
 
-ADD target/DockerBuildTest-1.0-SNAPSHOT.jar .
-
-ENTRYPOINT ["java","-jar","-d64","-server","DockerBuildTest-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","-d64","-server","target/DockerBuildTest-1.0-SNAPSHOT.jar"]
