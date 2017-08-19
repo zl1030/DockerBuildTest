@@ -11,19 +11,19 @@ RUN apk update
 RUN apk add --no-cache \
     maven
 
-RUN mkdir $WORKSPACE
+RUN mkdir "$WORKSPACE_PATH"
 
-WORKDIR $WORKSPACE
+WORKDIR "$WORKSPACE_PATH"
 
 ADD ./* ./
 
 RUN set -x \
     && mvn clean package \
-    && mkdir $APP_PATH \
-    && cp target/$JAR_NAME $APP_PATH/ \
-    && rm -rf $WORKSPACE
+    && mkdir "$APP_PATH" \
+    && cp target/"$JAR_NAME" "$APP_PATH"/ \
+    && rm -rf "$WORKSPACE_PATH"
 
-WORKDIR $APP_PATH
+WORKDIR "$APP_PATH"
 
 #ENTRYPOINT ["java","-jar","-d64","-server","$JAR_NAME"]
 
