@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER zl1030 "zl1030@163.com"
 
-# RUN yum update
+RUN yum update
 
 RUN yum -y install java maven
 
