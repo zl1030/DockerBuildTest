@@ -25,6 +25,8 @@
 !.gitignore
 !LICENSE
 !README.md
+!Dockerfile
+!.travis.yml
 
 # Ignore some directory
 .*/
