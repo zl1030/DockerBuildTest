@@ -25,7 +25,6 @@ RUN set -eux \
 
 WORKDIR "$APP_PATH"
 
-ENTRYPOINT ["java","-jar","-d64","-server","$JAR_NAME"]
-
+ENTRYPOINT ["java","-jar","-d64","-server","DockerBuildTest-1.0-SNAPSHOT.jar"]
 
 #CMD ["java","-jar","-d64","-server","$JAR_NAME"]
