@@ -1,10 +1,12 @@
-FROM centos:7
+FROM alpine:3.6
 
 MAINTAINER zl1030 "zl1030@163.com"
 
-RUN yum update
+RUN apk update
 
-RUN yum -y install java maven
+RUN apk add --no-cache openjdk8 maven
+
+RUN export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 
 RUN mkdir /usr/app
 
