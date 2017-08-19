@@ -13,13 +13,11 @@ WORKDIR /usr/workspace
 
 ADD ./* ./
 
-RUN mvn clean package
-
-RUN mkdir /usr/target
-
-RUN cp target/DockerBuildTest-1.0-SNAPSHOT.jar /usr/target/
-
-RUN rm -rf /usr/workspace
+RUN set -x \
+    && mvn clean package \
+    && mkdir /usr/target \
+    && cp target/DockerBuildTest-1.0-SNAPSHOT.jar /usr/target/ \
+    && rm -rf /usr/workspace \
 
 #ENTRYPOINT ["java","-jar","-d64","-server","/usr/target/DockerBuildTest-1.0-SNAPSHOT.jar"]
 
