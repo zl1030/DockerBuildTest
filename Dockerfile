@@ -8,6 +8,12 @@ WORKDIR /usr/app
 
 ADD ./* ./
 
+RUN ls -l
+
 RUN mvn clean package
+
+RUN ls -l
+
+RUN ls -l target
 
 CMD ["java","jar","/usr/app/target/DockerBuildTest-1.0-SNAPSHOT.jar"]
