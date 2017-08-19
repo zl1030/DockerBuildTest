@@ -20,8 +20,7 @@ ADD ./* ./
 RUN set -eux \
     && mvn clean package \
     && mkdir "$APP_PATH" \
-    && cp target/"$JAR_NAME" "$APP_PATH"/ \
-    && mv "$APP_PATH"/"$JAR_NAME" "$APP_PATH"/app.jar
+    && cp target/"$JAR_NAME" "$APP_PATH"/app.jar \
     && rm -rf "$WORKSPACE_PATH"
 
 WORKDIR "$APP_PATH"
