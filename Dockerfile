@@ -6,6 +6,11 @@ RUN apk update
 
 RUN apk add --no-cache openjdk8 maven
 
+RUN export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+RUN export JRE_HOME=${JAVA_HOME}/jre
+RUN export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+RUN export PATH=${JAVA_HOME}/bin:$PATH
+
 RUN mkdir /usr/workspace
 
 WORKDIR /usr/workspace
