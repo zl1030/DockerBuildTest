@@ -1,4 +1,4 @@
-FROM maven:3.5.0-jdk-8
+FROM zl1030/centos7-jdk8-maven
 
 MAINTAINER zl1030 "zl1030@163.com"
 
@@ -15,7 +15,7 @@ COPY . .
 RUN set -e \
     && RUN mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V \
     && mvn clean package \
-    && cp "$WORKSPACE"/target/"$JAR_NAME" "$APP_PATH"/ \
+    && cp "$WORKSPACE"/target/*.* "$APP_PATH"/ \
     && rm -rf "$WORKSPACE"
 
 WORKDIR "$APP_PATH"
