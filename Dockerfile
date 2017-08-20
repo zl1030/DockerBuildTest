@@ -2,14 +2,24 @@ FROM maven:3.5.0-jdk-8
 
 MAINTAINER zl1030 "zl1030@163.com"
 
-RUN mkdir /usr/app
+ARG WORKSPACE /usr/workspace
+ENV APP_PATH /usr/app
+ENV JAR_NAME DockerBuildTest-1.0-SNAPSHOT.jar
 
-WORKDIR /usr/app
+RUN mkdir $WORKSPACE $APP_PATH
+
+WORKDIR $WORKSPACE
 
 COPY . .
 
-RUN mvn clean package
+RUN set -e \
+    && RUN mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V \
+    && mvn clean package
 
-RUN ls -l target
+RUN cp $WORKSPACE/target/$JAR_NAME $APP_PATH/
 
-CMD ["java","jar","/usr/app/target/DockerBuildTest-1.0-SNAPSHOT.jar"]
+RUN rm -rf $WORKSPACE
+
+WORKDIR $APP_PATH
+
+CMD ["java","-jar","$APP_PATH/$JAR_NAME"]
