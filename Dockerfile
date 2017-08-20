@@ -13,7 +13,7 @@ WORKDIR "$WORKSPACE"
 COPY . .
 
 RUN set -e \
-    && RUN mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V \
+    && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V \
     && mvn clean package \
     && cp "$WORKSPACE"/target/*.* "$APP_PATH"/ \
     && rm -rf "$WORKSPACE"
