@@ -14,11 +14,9 @@ COPY . .
 
 RUN set -e \
     && RUN mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V \
-    && mvn clean package
-
-RUN cp $WORKSPACE/target/$JAR_NAME $APP_PATH/
-
-RUN rm -rf $WORKSPACE
+    && mvn clean package \
+    && cp $WORKSPACE/target/$JAR_NAME $APP_PATH/ \
+    && rm -rf $WORKSPACE
 
 WORKDIR $APP_PATH
 
