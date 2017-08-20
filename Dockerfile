@@ -6,7 +6,7 @@ RUN mkdir /usr/app
 
 WORKDIR /usr/app
 
-ADD ./* ./
+COPY . .
 
 RUN mvn clean package
 
