@@ -8,11 +8,7 @@ WORKDIR /usr/app
 
 ADD ./* ./
 
-RUN ls -l
-
-RUN mvn clean package
-
-RUN ls -l
+RUN mvn clean compile package
 
 RUN ls -l target
 
