@@ -16,8 +16,10 @@ RUN set -e \
     && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V \
     && mvn clean package \
     && cp "$WORKSPACE"/target/*.* "$APP_PATH"/ \
-    && rm -rf "$WORKSPACE"
+    && rm -rf "$WORKSPACE" \
 
 WORKDIR "$APP_PATH"
 
-CMD ["java","-jar","$APP_PATH/$JAR_NAME"]
+RUN mv "$JAR_NAME" app.jar
+
+CMD ["java","-jar","-d64","-server","app.jar"]
